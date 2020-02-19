@@ -45,11 +45,14 @@ class DataUserMixin:
             else:
                 password = ''
 
-            # extract user name
-            user_name = users_dataset[i+11:i+35].decode('ascii')
+             try:
+                # extract user name
+                user_name = users_dataset[i+11:i+35].decode('ascii')
 
-            # remove non printable chars
-            user_name = user_name.replace('\x00', '')
+                # remove non printable chars
+                user_name = user_name.split('\x00', 1)[0]
+            except:
+                user_name = ""
 
             # extract card number
             card_no = struct.unpack('<I', users_dataset[i+35:i+39])[0]
