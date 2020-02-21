@@ -45,7 +45,7 @@ class DataUserMixin:
             else:
                 password = ''
 
-             try:
+            try:
                 # extract user name
                 user_name = users_dataset[i+11:i+35].decode('ascii')
 
